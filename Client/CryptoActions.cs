@@ -17,14 +17,12 @@ namespace Client
            
         }
 
-        static public string GetHash(string message)
+        static public byte[] GetHash(string message)
         {
             using (var hash = HashAlgorithm.Create("GOST3411"))
             {
                 byte[] encodedMessage = new UTF8Encoding().GetBytes(message);
-                hash.ComputeHash(encodedMessage);
-                var messageHash = hash.Hash;
-                return messageHash.ToString();
+                return hash.ComputeHash(encodedMessage);   
             }
         }
     }
