@@ -7,6 +7,7 @@ using System.IO;
 using System.Security.Cryptography;
 
 using CryptoPro.Sharpei;
+using PeNet.Asn1;
 
 namespace Client
 {

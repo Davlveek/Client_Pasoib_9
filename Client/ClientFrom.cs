@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Client
 {
@@ -37,8 +38,23 @@ namespace Client
                 return;
             }
 
-            string hash = CryptoActions.GetHash(message);
-            MessageBox.Show(hash);
+            byte[] hash = CryptoActions.GetHash(message);
+            string textBoxHash = BitConverter.ToString(hash)
+                .Replace("-", string.Empty)
+                .ToLower();
+            MessageHashTextBox.Text = textBoxHash;
+        }
+
+        private void LoadCertificates()
+        {
+            const string certsPath = "C:\\certs\\";
+            string[] fileEntries = Directory.GetFiles(certsPath);
+            certsListBox.Items.AddRange(fileEntries);
+        }
+
+        private void ClientFrom_Load(object sender, EventArgs e)
+        {
+            LoadCertificates();
         }
     }
 }
