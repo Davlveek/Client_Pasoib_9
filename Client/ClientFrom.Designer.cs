@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.certsListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.reloadButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SendButton
@@ -136,11 +137,22 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Certificates";
             // 
+            // reloadButton
+            // 
+            this.reloadButton.Location = new System.Drawing.Point(611, 325);
+            this.reloadButton.Name = "reloadButton";
+            this.reloadButton.Size = new System.Drawing.Size(75, 23);
+            this.reloadButton.TabIndex = 11;
+            this.reloadButton.Text = "Reload";
+            this.reloadButton.UseVisualStyleBackColor = true;
+            this.reloadButton.Click += new System.EventHandler(this.reloadButton_Click);
+            // 
             // ClientFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 369);
+            this.Controls.Add(this.reloadButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.certsListBox);
             this.Controls.Add(this.label2);
@@ -173,6 +185,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox certsListBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button reloadButton;
     }
 }
 

@@ -47,12 +47,18 @@ namespace Client
 
         private void LoadCertificates()
         {
+            certsListBox.Items.Clear();
             const string certsPath = "C:\\certs\\";
             string[] fileEntries = Directory.GetFiles(certsPath);
             certsListBox.Items.AddRange(fileEntries);
         }
 
         private void ClientFrom_Load(object sender, EventArgs e)
+        {
+            LoadCertificates();
+        }
+
+        private void reloadButton_Click(object sender, EventArgs e)
         {
             LoadCertificates();
         }
