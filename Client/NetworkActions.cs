@@ -8,6 +8,9 @@ namespace Client
 {
     class NetworkActions
     {
+        static public void SendData(byte[] data)
+        {
 
+        }
     }
 }
