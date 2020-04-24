@@ -13,6 +13,8 @@ namespace Client
 {
     public partial class ClientFrom : Form
     {
+        private CryptoClient client;
+
         public ClientFrom()
         {
             InitializeComponent();
@@ -55,16 +57,36 @@ namespace Client
             }
 
             byte[] sign = CryptoActions.Sign(message);
-
+            client.SendData(sign);
         }
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
+            var address = AddressTextBox.Text;
+            var _port = PortTextBox.Text;
 
+            if (string.IsNullOrEmpty(address) && string.IsNullOrEmpty(_port))
+            {
+                MessageBox.Show("Empty server IP adress or port!");
+                return;
+            }
+
+            var port = Convert.ToInt32(_port);
+            client = new CryptoClient(address, port);
+            client.InitNetworkStream();
         }
 
         private void DisconnectButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                client.CloseNetworkStream();
+                client.Dispose();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($"Exception: {exp}");
+            }
 
         }
     }

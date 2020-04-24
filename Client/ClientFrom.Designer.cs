@@ -33,8 +33,8 @@
             this.HashButton = new System.Windows.Forms.Button();
             this.MessageHashTextBox = new System.Windows.Forms.TextBox();
             this.HashLabel = new System.Windows.Forms.Label();
-            this.ipTextBox = new System.Windows.Forms.TextBox();
-            this.portTextBox = new System.Windows.Forms.TextBox();
+            this.AddressTextBox = new System.Windows.Forms.TextBox();
+            this.PortTextBox = new System.Windows.Forms.TextBox();
             this.addressLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SignButton = new System.Windows.Forms.Button();
@@ -87,24 +87,24 @@
             this.HashLabel.TabIndex = 4;
             this.HashLabel.Text = "Hash";
             // 
-            // ipTextBox
+            // AddressTextBox
             // 
-            this.ipTextBox.Location = new System.Drawing.Point(93, 42);
-            this.ipTextBox.Name = "ipTextBox";
-            this.ipTextBox.Size = new System.Drawing.Size(171, 20);
-            this.ipTextBox.TabIndex = 5;
+            this.AddressTextBox.Location = new System.Drawing.Point(93, 42);
+            this.AddressTextBox.Name = "AddressTextBox";
+            this.AddressTextBox.Size = new System.Drawing.Size(171, 20);
+            this.AddressTextBox.TabIndex = 5;
             // 
-            // portTextBox
+            // PortTextBox
             // 
-            this.portTextBox.Location = new System.Drawing.Point(270, 42);
-            this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(171, 20);
-            this.portTextBox.TabIndex = 6;
+            this.PortTextBox.Location = new System.Drawing.Point(270, 42);
+            this.PortTextBox.Name = "PortTextBox";
+            this.PortTextBox.Size = new System.Drawing.Size(171, 20);
+            this.PortTextBox.TabIndex = 6;
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(131, 26);
+            this.addressLabel.Location = new System.Drawing.Point(128, 18);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(91, 13);
             this.addressLabel.TabIndex = 7;
@@ -113,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(341, 26);
+            this.label2.Location = new System.Drawing.Point(340, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 8;
@@ -153,14 +153,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 391);
+            this.ClientSize = new System.Drawing.Size(461, 391);
             this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.DisconnectButton);
             this.Controls.Add(this.SignButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.addressLabel);
-            this.Controls.Add(this.portTextBox);
-            this.Controls.Add(this.ipTextBox);
+            this.Controls.Add(this.PortTextBox);
+            this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.HashLabel);
             this.Controls.Add(this.MessageHashTextBox);
             this.Controls.Add(this.HashButton);
@@ -180,8 +180,8 @@
         private System.Windows.Forms.Button HashButton;
         private System.Windows.Forms.TextBox MessageHashTextBox;
         private System.Windows.Forms.Label HashLabel;
-        private System.Windows.Forms.TextBox ipTextBox;
-        private System.Windows.Forms.TextBox portTextBox;
+        private System.Windows.Forms.TextBox AddressTextBox;
+        private System.Windows.Forms.TextBox PortTextBox;
         private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button SignButton;
