@@ -8,22 +8,23 @@ using System.Net.Sockets;
 
 namespace Client
 {
-    class CryptoClient
+    class CryptoClient : IDisposable
     {
-        private readonly TcpClient Client;
+        private TcpClient client;
         private NetworkStream stream;
 
-        public CryptoClient(string address, int port) => Client.Connect(address, port);
+        public CryptoClient(string address, int port) 
+        {
+            client = new TcpClient();
+            client.Connect(address, port);
+        }
 
-        ~CryptoClient() => Client.Close();
+        public void Dispose() => client.Close();
 
-        public void InitNetworkStream() => stream = Client.GetStream();
+        public void InitNetworkStream() => stream = client.GetStream();
 
         public void CloseNetworkStream() => stream.Close();
 
-        public void SendData(byte[] data)
-        {
-            
-        }
+        public void SendData(byte[] data) => stream.Write(data, 0, data.Length);
     }
 }
