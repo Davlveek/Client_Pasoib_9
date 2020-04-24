@@ -45,22 +45,27 @@ namespace Client
             MessageHashTextBox.Text = textBoxHash;
         }
 
-        private void LoadCertificates()
+        private void SignButton_Click(object sender, EventArgs e)
         {
-            certsListBox.Items.Clear();
-            const string certsPath = "C:\\certs\\";
-            string[] fileEntries = Directory.GetFiles(certsPath);
-            certsListBox.Items.AddRange(fileEntries);
+            string message = MessageRichBox.Text;
+            if (string.IsNullOrEmpty(message))
+            {
+                MessageBox.Show("Empty message!");
+                return;
+            }
+
+            byte[] sign = CryptoActions.Sign(message);
+
         }
 
-        private void ClientFrom_Load(object sender, EventArgs e)
+        private void ConnectButton_Click(object sender, EventArgs e)
         {
-            LoadCertificates();
+
         }
 
-        private void reloadButton_Click(object sender, EventArgs e)
+        private void DisconnectButton_Click(object sender, EventArgs e)
         {
-            LoadCertificates();
+
         }
     }
 }

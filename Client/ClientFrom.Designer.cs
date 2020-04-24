@@ -37,14 +37,14 @@
             this.portTextBox = new System.Windows.Forms.TextBox();
             this.addressLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.certsListBox = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.reloadButton = new System.Windows.Forms.Button();
+            this.SignButton = new System.Windows.Forms.Button();
+            this.DisconnectButton = new System.Windows.Forms.Button();
+            this.ConnectButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SendButton
             // 
-            this.SendButton.Location = new System.Drawing.Point(52, 50);
+            this.SendButton.Location = new System.Drawing.Point(12, 314);
             this.SendButton.Name = "SendButton";
             this.SendButton.Size = new System.Drawing.Size(75, 23);
             this.SendButton.TabIndex = 0;
@@ -54,15 +54,15 @@
             // 
             // MessageRichBox
             // 
-            this.MessageRichBox.Location = new System.Drawing.Point(52, 79);
+            this.MessageRichBox.Location = new System.Drawing.Point(12, 68);
             this.MessageRichBox.Name = "MessageRichBox";
-            this.MessageRichBox.Size = new System.Drawing.Size(439, 240);
+            this.MessageRichBox.Size = new System.Drawing.Size(429, 240);
             this.MessageRichBox.TabIndex = 1;
             this.MessageRichBox.Text = "";
             // 
             // HashButton
             // 
-            this.HashButton.Location = new System.Drawing.Point(133, 50);
+            this.HashButton.Location = new System.Drawing.Point(174, 314);
             this.HashButton.Name = "HashButton";
             this.HashButton.Size = new System.Drawing.Size(75, 23);
             this.HashButton.TabIndex = 2;
@@ -72,16 +72,16 @@
             // 
             // MessageHashTextBox
             // 
-            this.MessageHashTextBox.Location = new System.Drawing.Point(87, 325);
+            this.MessageHashTextBox.Location = new System.Drawing.Point(47, 347);
             this.MessageHashTextBox.Name = "MessageHashTextBox";
             this.MessageHashTextBox.ReadOnly = true;
-            this.MessageHashTextBox.Size = new System.Drawing.Size(404, 20);
+            this.MessageHashTextBox.Size = new System.Drawing.Size(394, 20);
             this.MessageHashTextBox.TabIndex = 3;
             // 
             // HashLabel
             // 
             this.HashLabel.AutoSize = true;
-            this.HashLabel.Location = new System.Drawing.Point(49, 328);
+            this.HashLabel.Location = new System.Drawing.Point(9, 350);
             this.HashLabel.Name = "HashLabel";
             this.HashLabel.Size = new System.Drawing.Size(32, 13);
             this.HashLabel.TabIndex = 4;
@@ -89,72 +89,74 @@
             // 
             // ipTextBox
             // 
-            this.ipTextBox.Location = new System.Drawing.Point(214, 52);
+            this.ipTextBox.Location = new System.Drawing.Point(93, 42);
             this.ipTextBox.Name = "ipTextBox";
             this.ipTextBox.Size = new System.Drawing.Size(171, 20);
             this.ipTextBox.TabIndex = 5;
             // 
             // portTextBox
             // 
-            this.portTextBox.Location = new System.Drawing.Point(391, 53);
+            this.portTextBox.Location = new System.Drawing.Point(270, 42);
             this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(100, 20);
+            this.portTextBox.Size = new System.Drawing.Size(171, 20);
             this.portTextBox.TabIndex = 6;
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(275, 36);
+            this.addressLabel.Location = new System.Drawing.Point(131, 26);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(45, 13);
+            this.addressLabel.Size = new System.Drawing.Size(91, 13);
             this.addressLabel.TabIndex = 7;
-            this.addressLabel.Text = "Address";
+            this.addressLabel.Text = "Server IP address";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(431, 37);
+            this.label2.Location = new System.Drawing.Point(341, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Port";
             // 
-            // certsListBox
+            // SignButton
             // 
-            this.certsListBox.FormattingEnabled = true;
-            this.certsListBox.Location = new System.Drawing.Point(497, 79);
-            this.certsListBox.Name = "certsListBox";
-            this.certsListBox.Size = new System.Drawing.Size(319, 238);
-            this.certsListBox.TabIndex = 9;
+            this.SignButton.Location = new System.Drawing.Point(93, 314);
+            this.SignButton.Name = "SignButton";
+            this.SignButton.Size = new System.Drawing.Size(75, 23);
+            this.SignButton.TabIndex = 12;
+            this.SignButton.Text = "Sign";
+            this.SignButton.UseVisualStyleBackColor = true;
+            this.SignButton.Click += new System.EventHandler(this.SignButton_Click);
             // 
-            // label1
+            // DisconnectButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(607, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Certificates";
+            this.DisconnectButton.Location = new System.Drawing.Point(12, 42);
+            this.DisconnectButton.Name = "DisconnectButton";
+            this.DisconnectButton.Size = new System.Drawing.Size(75, 23);
+            this.DisconnectButton.TabIndex = 13;
+            this.DisconnectButton.Text = "Disconnect";
+            this.DisconnectButton.UseVisualStyleBackColor = true;
+            this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
             // 
-            // reloadButton
+            // ConnectButton
             // 
-            this.reloadButton.Location = new System.Drawing.Point(611, 325);
-            this.reloadButton.Name = "reloadButton";
-            this.reloadButton.Size = new System.Drawing.Size(75, 23);
-            this.reloadButton.TabIndex = 11;
-            this.reloadButton.Text = "Reload";
-            this.reloadButton.UseVisualStyleBackColor = true;
-            this.reloadButton.Click += new System.EventHandler(this.reloadButton_Click);
+            this.ConnectButton.Location = new System.Drawing.Point(12, 13);
+            this.ConnectButton.Name = "ConnectButton";
+            this.ConnectButton.Size = new System.Drawing.Size(75, 23);
+            this.ConnectButton.TabIndex = 14;
+            this.ConnectButton.Text = "Connect";
+            this.ConnectButton.UseVisualStyleBackColor = true;
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
             // ClientFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 369);
-            this.Controls.Add(this.reloadButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.certsListBox);
+            this.ClientSize = new System.Drawing.Size(481, 391);
+            this.Controls.Add(this.ConnectButton);
+            this.Controls.Add(this.DisconnectButton);
+            this.Controls.Add(this.SignButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.addressLabel);
             this.Controls.Add(this.portTextBox);
@@ -166,7 +168,6 @@
             this.Controls.Add(this.SendButton);
             this.Name = "ClientFrom";
             this.Text = "Client";
-            this.Load += new System.EventHandler(this.ClientFrom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,9 +184,9 @@
         private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox certsListBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button reloadButton;
+        private System.Windows.Forms.Button SignButton;
+        private System.Windows.Forms.Button DisconnectButton;
+        private System.Windows.Forms.Button ConnectButton;
     }
 }
 
