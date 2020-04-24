@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SendButton = new System.Windows.Forms.Button();
             this.MessageRichBox = new System.Windows.Forms.RichTextBox();
             this.HashButton = new System.Windows.Forms.Button();
             this.MessageHashTextBox = new System.Windows.Forms.TextBox();
@@ -40,17 +39,8 @@
             this.SignButton = new System.Windows.Forms.Button();
             this.DisconnectButton = new System.Windows.Forms.Button();
             this.ConnectButton = new System.Windows.Forms.Button();
+            this.EncryptButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // SendButton
-            // 
-            this.SendButton.Location = new System.Drawing.Point(12, 314);
-            this.SendButton.Name = "SendButton";
-            this.SendButton.Size = new System.Drawing.Size(75, 23);
-            this.SendButton.TabIndex = 0;
-            this.SendButton.Text = "Send";
-            this.SendButton.UseVisualStyleBackColor = true;
-            this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
             // MessageRichBox
             // 
@@ -62,7 +52,7 @@
             // 
             // HashButton
             // 
-            this.HashButton.Location = new System.Drawing.Point(174, 314);
+            this.HashButton.Location = new System.Drawing.Point(212, 318);
             this.HashButton.Name = "HashButton";
             this.HashButton.Size = new System.Drawing.Size(75, 23);
             this.HashButton.TabIndex = 2;
@@ -121,7 +111,7 @@
             // 
             // SignButton
             // 
-            this.SignButton.Location = new System.Drawing.Point(93, 314);
+            this.SignButton.Location = new System.Drawing.Point(47, 318);
             this.SignButton.Name = "SignButton";
             this.SignButton.Size = new System.Drawing.Size(75, 23);
             this.SignButton.TabIndex = 12;
@@ -149,11 +139,22 @@
             this.ConnectButton.UseVisualStyleBackColor = true;
             this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
+            // EncryptButton
+            // 
+            this.EncryptButton.Location = new System.Drawing.Point(131, 318);
+            this.EncryptButton.Name = "EncryptButton";
+            this.EncryptButton.Size = new System.Drawing.Size(75, 23);
+            this.EncryptButton.TabIndex = 16;
+            this.EncryptButton.Text = "Encrypt";
+            this.EncryptButton.UseVisualStyleBackColor = true;
+            this.EncryptButton.Click += new System.EventHandler(this.EncryptButton_Click);
+            // 
             // ClientFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 391);
+            this.ClientSize = new System.Drawing.Size(452, 376);
+            this.Controls.Add(this.EncryptButton);
             this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.DisconnectButton);
             this.Controls.Add(this.SignButton);
@@ -165,7 +166,6 @@
             this.Controls.Add(this.MessageHashTextBox);
             this.Controls.Add(this.HashButton);
             this.Controls.Add(this.MessageRichBox);
-            this.Controls.Add(this.SendButton);
             this.Name = "ClientFrom";
             this.Text = "Client";
             this.ResumeLayout(false);
@@ -174,8 +174,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button SendButton;
         private System.Windows.Forms.RichTextBox MessageRichBox;
         private System.Windows.Forms.Button HashButton;
         private System.Windows.Forms.TextBox MessageHashTextBox;
@@ -187,6 +185,7 @@
         private System.Windows.Forms.Button SignButton;
         private System.Windows.Forms.Button DisconnectButton;
         private System.Windows.Forms.Button ConnectButton;
+        private System.Windows.Forms.Button EncryptButton;
     }
 }
 
