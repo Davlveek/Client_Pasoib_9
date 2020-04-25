@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -18,17 +12,6 @@ namespace Client
         public ClientFrom()
         {
             InitializeComponent();
-        }
-
-        private void SendButton_Click(object sender, EventArgs e)
-        {
-            string message = MessageRichBox.Text;
-            if (string.IsNullOrEmpty(message))
-            {
-                MessageBox.Show("Empty message!");
-                return;
-            }
-            MessageBox.Show(message);
         }
 
         private void HashButton_Click(object sender, EventArgs e)
@@ -49,12 +32,21 @@ namespace Client
 
         private void SignButton_Click(object sender, EventArgs e)
         {
+            if (client == null)
+            {
+                MessageBox.Show("No connection!");
+                return;
+            }
+
             string message = MessageRichBox.Text;
             if (string.IsNullOrEmpty(message))
             {
                 MessageBox.Show("Empty message!");
                 return;
             }
+
+            client.SendData(new UnicodeEncoding().GetBytes("4"));
+            client.SendData(new UnicodeEncoding().GetBytes("Sign"));
 
             byte[] sign = CryptoActions.Sign(message);
             client.SendData(sign);
@@ -71,15 +63,25 @@ namespace Client
                 return;
             }
 
-            var port = Convert.ToInt32(_port);
-            client = new CryptoClient(address, port);
-            client.InitNetworkStream();
+            try
+            {
+                var port = Convert.ToInt32(_port);
+                client = new CryptoClient(address, port);
+                client.InitNetworkStream();
+                MessageBox.Show($"Connected to {address}");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($"Exception: {exp}");
+            }
         }
 
         private void DisconnectButton_Click(object sender, EventArgs e)
         {
             try
             {
+                client.SendData(new UnicodeEncoding().GetBytes("5"));
+                client.SendData(new UnicodeEncoding().GetBytes("Close"));
                 client.CloseNetworkStream();
                 client.Dispose();
             }
@@ -87,7 +89,23 @@ namespace Client
             {
                 MessageBox.Show($"Exception: {exp}");
             }
+        }
 
+        private void EncryptButton_Click(object sender, EventArgs e)
+        {
+            string message = MessageRichBox.Text;
+            if (string.IsNullOrEmpty(message))
+            {
+                MessageBox.Show("Empty message!");
+                return;
+            }
+
+            client.SendData(new UnicodeEncoding().GetBytes("7"));
+            client.SendData(new UnicodeEncoding().GetBytes("Encrypt"));
+
+            byte[] signedData = CryptoActions.Sign(message);
+            byte[] encryptedData = CryptoActions.Encrypt(signedData);
+            client.SendData(encryptedData);
         }
     }
 }

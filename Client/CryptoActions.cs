@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Pkcs;
-
-using CryptoPro.Sharpei;
 
 namespace Client
 {
@@ -33,7 +27,7 @@ namespace Client
                    (certificate.NotBefore <= DateTime.Now);
         }
 
-        static public byte[] Sign(string message)
+        static public X509Certificate2 GetCertificate()
         {
             var store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
             store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadWrite);
@@ -46,18 +40,43 @@ namespace Client
                 X509SelectionFlag.SingleSelection);
             X509Certificate2 certificate = collection[0];
 
-            if (!VerifyCert(certificate))
+            return VerifyCert(certificate) ? certificate : null;
+        }
+
+        static public byte[] Sign(string message)
+        {
+            var certificate = GetCertificate();
+
+            if (certificate == null)
             {
                 byte[] zero = { 0 };
                 return zero;
             }
 
-            byte[] encodedMessage = new UTF8Encoding().GetBytes(message);
+            byte[] encodedMessage = new UnicodeEncoding().GetBytes(message);
             var contentInfo = new ContentInfo(encodedMessage);
-            var cms = new SignedCms(contentInfo, false);
+            var cms = new SignedCms(contentInfo);
             var signer = new CmsSigner(certificate);
             cms.ComputeSignature(signer, false);
             
+            return cms.Encode();
+        }
+
+        static public byte[] Encrypt(byte[] data)
+        {
+            var certificate = GetCertificate();
+
+            if (certificate == null)
+            {
+                byte[] zero = { 0 };
+                return zero;
+            }
+
+            var contentInfo = new ContentInfo(data);
+            var cms = new EnvelopedCms(contentInfo);
+            var recipient = new CmsRecipient(SubjectIdentifierType.IssuerAndSerialNumber, certificate);
+            cms.Encrypt(recipient);
+
             return cms.Encode();
         }
 
